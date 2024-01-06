@@ -5,7 +5,8 @@ app.use(cors())
 
 app.use(express.json())
 
-
+const db = require('./dataBase/connection')
+db()
 
 
 //Router posts
