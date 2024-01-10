@@ -98,7 +98,7 @@ const userController = {
   },
 
 
-  FindId: async (req, res) => {
+  FindName: async (req, res) => {
     try {
       const name = req.params.name
       const response = await UserModel.findOne({userName: name}).select('-password -email')

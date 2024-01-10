@@ -18,7 +18,11 @@ const friendsControllers = {
       const follow = await UserModel.findById(newFollower.id);
       const follower = await UserModel.findById(newFollow.id);
 
-      const isFollowing = follow.followings.find((elm) => elm.id == newFollow.id)
+
+
+
+      const isFollowing = follow.followings.some((elm) => elm.id == newFollow.id)
+ 
 
     //verifica se já está seguindo
       if (isFollowing) {
@@ -37,6 +41,7 @@ const friendsControllers = {
 
       res.status(201).json({ msg: "seguindo" });
     } catch (error) {
+      // console.log(error);
       res.status(500).json({
         msg: "Erro interno. STATUS DO ERRO: 500",
         error: error,
