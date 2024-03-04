@@ -55,7 +55,7 @@ const userController = {
       if (!isUser) {
         return res.status(404).json({ msg: "Email ou senha incorretos" });
       }
-
+      
       const checkPassword = await bcrypt.compare(password, isUser.password);
       if (!checkPassword) {
         return res.status(404).json({ msg: "Email ou senha incorretos" });
@@ -81,9 +81,7 @@ const userController = {
   FindSearch: async (req, res) => {
     try {
       const name = req.params.name
-      console.log(name);
       const response = await UserModel.find({userName: new RegExp('^' +name, 'i')}).select('-password -email')
-      console.log(response);
   
       if (!response || response.length == 0) {
         return res.status(405).json({ msg: "Usuário não encontrado..." });
@@ -102,7 +100,6 @@ const userController = {
     try {
       const name = req.params.name
       const response = await UserModel.findOne({userName: name}).select('-password -email')
-      console.log(response);
   
       if (!response) {
         return res.status(404).json({ msg: "user não encontrado" });
