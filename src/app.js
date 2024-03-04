@@ -29,4 +29,5 @@ app.use('/', routerUser)
 
 
 
-module.exports = {serverHttp, io}
+module.exports = io;
+module.exports =  serverHttp
